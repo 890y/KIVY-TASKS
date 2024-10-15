@@ -1,0 +1,22 @@
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.colorpicker import ColorPicker
+from kivy.uix.label import Label
+
+class ColorPickerApp(App):
+    def build(self):
+        layout = BoxLayout(orientation='vertical')
+        self.label = Label(text='Pick a Color', size_hint=(1, 0.2))
+        layout.add_widget(self.label)
+
+        color_picker = ColorPicker()
+        color_picker.bind(color=self.on_color)
+        layout.add_widget(color_picker)
+
+        return layout
+
+    def on_color(self, instance, value):
+        self.label.color = value
+
+if __name__ == '__main__':
+    ColorPickerApp().run()
