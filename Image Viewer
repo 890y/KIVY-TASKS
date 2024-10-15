@@ -1,0 +1,23 @@
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.image import Image
+from kivy.uix.button import Button
+
+class ImageViewerApp(App):
+    def build(self):
+        layout = BoxLayout(orientation='vertical')
+        self.image = Image(source='your_image.png')  # Replace with your image path
+        layout.add_widget(self.image)
+
+        button = Button(text='Change Image')
+        button.bind(on_press=self.change_image)
+        layout.add_widget(button)
+
+        return layout
+
+    def change_image(self, instance):
+        self.image.source = 'your_second_image.png'  # Replace with another image path
+        self.image.reload()
+
+if __name__ == '__main__':
+    ImageViewerApp().run()
