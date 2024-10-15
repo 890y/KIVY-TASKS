@@ -1,0 +1,29 @@
+# Import the necessary Kivy modules
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+
+# Define the main application class
+class MyApp(App):
+    def build(self):
+        # Create a BoxLayout
+        layout = BoxLayout(orientation='vertical')
+
+        # Create a label
+        self.label = Label(text='Hello, Kivy!')
+        layout.add_widget(self.label)
+
+        # Create a button and bind its on_press event to a method
+        button = Button(text='Click Me!')
+        button.bind(on_press=self.on_button_click)
+        layout.add_widget(button)
+
+        return layout
+
+    def on_button_click(self, instance):
+        self.label.text = 'Button Clicked!'
+
+# Run the application
+if __name__ == '__main__':
+    MyApp().run()
